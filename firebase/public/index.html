@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="shortcut icon" sizes="800x600" href="images/TennisIcon.jpeg">
+    <link rel="apple-touch-icon" sizes="800x600" href="images/TennisIcon.jpeg">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Tournament</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/mobile.css">
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <header>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-4">
+                        <a v-on:click="showPages('TournamentRules')"><i class="fas fa-question-circle"></i>
+                        </a></div>
+
+                    <div class="col-4">
+                        <div class="flexCenter">
+                            <button type="button" v-on:click="showPages('index')" class="btn btn-Menu">Home</button>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="flexEnd">
+                            <button id="logout" type="button" class="btn btn-logout d-none" v-on:click="logout()">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <div v-if="pages == 'index'">
+
+            <h1 class="blink"> Tennis Competition </h1>
+            <div class="col-12">
+                <div class="flexCenter">
+                    <div class="separeTop">
+                        <img class="icon" src='images/tennis-2-filled.png' alt="racquet"></div>
+                </div>
+
+                <div class="flexCenter">
+                    <div class="separeTop">
+                        <button type="button" v-on:click="showPages('teamslocation')" class="btn btn-button">Teams & Club Locations</button>
+                    </div>
+                </div>
+            </div>
+            <div class="flexCenter">
+                <div class="separeTop">
+                    <img class="icon" src='images/overtime-filled.png' alt="schedule"></div>
+            </div>
+            <div class="col-12">
+                <div class="flexCenter">
+                    <div class="separeTop">
+                        <button type="button" v-on:click="showPages('schedule')" class="btn btn-button">Schedule</button></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="flexSpaceAround">
+                            <div><img class="icon" src='images/leaderboard-filled.png' alt="rank"></div>
+                            <div><img class="icon" src='images/collaboration-filled.png' alt="chat"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="flexSpaceAround">
+                            <button type="button" v-on:click="showPages('rank')" class="btn btn-sbutton">Ranks</button>
+                            <button type="button" v-on:click="showPages('chat')" class="btn btn-sbutton">Chat</button> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="pages == 'teamslocation'">
+
+            <h2 class="category"> View Category </h2>
+
+            <div class="accordion" id="viewCat">
+                <div class="flexCenter">
+                    <div class="separate">
+                        <button @click="changeCategory('Absolute')" class="btn btn-primary" type="button" data-toggle="collapse" href="#AbsoluteOne" role="button" aria-expanded="false" aria-controls="AbsoluteOne">Absolute</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <div id="AbsoluteOne" class="collapse" aria-labelledby="headingOne" data-parent="#viewCat">
+                            <div class="card card-body">
+                                <h5 class="participants"> Participants Clubs: </h5>
+                                <ul v-for="team in teams">
+                                    <li @click="showPages('clubs', team.club)">{{team.club}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flexCenter">
+                        <div class="separate">
+
+                            <button @click="changeCategory('Between16_18')" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#Between18-16Two" aria-expanded="false" aria-controls="Between18-16Two">Between 16-18</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div id="Between18-16Two" class="collapse" aria-labelledby="headingTwo" data-parent="#viewCat">
+                            <div class="card card-body">
+                                <h5 class="participants"> Participants Clubs: </h5>
+                                <ul v-for="team in teams">
+                                    <li @click="showPages('clubs', team.club)">{{team.club}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div v-if="pages == 'schedule'">
+
+            <div class="container">
+                <h2 class="category"> Competition Schedule </h2>
+            </div>
+
+            <div class="container">
+                <div class="card card-body">
+                    <p class="size">* All games take place on Saturday's(contact manager on chat for any change)</p>
+                </div>
+            </div>
+
+            <div class="accordion" id="viewSchedule">
+                <div class="flexCenter">
+                    <div class="separate">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" href="#ScheduleOne" role="button" aria-expanded="false" aria-controls="ScheduleOne">Absolute</button>
+                    </div>
+                </div>
+                <div class="col">
+                    
+                        <div id="ScheduleOne" class="collapse" aria-labelledby="headingOne" data-parent="#viewSchedule">
+                            <div class="card card-body">
+                                <h5 class="participants"> Absolute Schedule </h5>
+                                <table class="table table-sm table-dark">
+                                    <tr>
+                                        <th>Round</th>
+                                        <th>Match</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                    </tr>
+                                    <tr v-for="game in Games">
+                                        <td v-if="game.category== 'Absolute'">{{game.round}}</td>
+                                        <td v-if="game.category== 'Absolute'" @click="showPages('match-results', game.ResultGame)">{{game.match}}</td>
+                                        <td v-if="game.category== 'Absolute'">{{game.date}}</td>
+                                        <td v-if="game.category== 'Absolute'">{{game.time}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                   
+
+                    <div class="flexCenter">
+                        <div class="separate">
+
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ScheduleTwo" aria-expanded="false" aria-controls="ScheduleTwo">Between 16-18</button>
+                        </div>
+                    </div>
+
+                   
+                        <div id="ScheduleTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#viewSchedule">
+                            <div class="card card-body">
+                                <h5 class="participants"> Between 16-18 Schedule </h5>
+                                <table class="table table-sm table-dark">
+                                    <tr>
+                                        <th>Round</th>
+                                        <th>Match</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                    </tr>
+                                    <tr v-for="game in Games">
+                                        <td v-if="game.category== 'Between16_18'">{{game.round}}</td>
+                                        <td v-if="game.category== 'Between16_18'" @click="showPages('match-results', game.ResultGame)">{{game.match}}</td>
+                                        <td v-if="game.category== 'Between16_18'">{{game.date}}</td>
+                                        <td v-if="game.category== 'Between16_18'">{{game.time}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="pages == 'TournamentRules'">
+
+            <h1 class="category"> Competition Rules </h1>
+
+            <div class="card card-body">
+                <ol class="lower-latin">
+                    <li>Every player plays one indivudual match against the other team. </li>
+                    <li>Each player must win two sets to take the match. Those players that won a match gets 3 points for the ranking competition, those that lost gets 1 point.</li>
+                    <li>Each player should play with their own material and do not use training t-shirt.</li>
+                    <li>Each club must won two indivudial matches to move on in the tournament and so move on to the next round</li>
+                    <li>In addition, courts and balls that are used are delivered by the tournament administrator.</li>
+                    <li>Finally, tournament administrator will award a trophy to the tournament champion club.</li>
+                </ol>
+            </div>
+        </div>
+
+
+        <div v-if="pages == 'player-results'">
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <a v-on:click="showPages('rank')">
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </a></div>
+                </div>
+            </div>
+
+            <h1 class="category"> Player Results </h1>
+            
+            <div class="card card-body">
+                <table class="table table-sm table-dark">
+                    <tr>
+                        <th>Games Played</th>
+                        <th>Match won</th>
+                        <th>Match Lost</th>
+                    </tr>
+                    <tr> 
+                        <td v-if="SelectPlayer.GamesPlayed== name">{{SelectPlayer.GamesPlayed}}</td>
+                        <td>{{SelectPlayer.match_won}}</td>
+                        <td>{{SelectPlayer.match_lost}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+        <div v-if="pages == 'match-results'">
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <a v-on:click="showPages('schedule')">
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </a></div>
+                </div>
+            </div>
+
+            <h1 class="category"> Match Results </h1>
+
+            <div class="card card-body">
+                <table class="table table-sm table-dark">
+                    <tr>
+                        <th>First Game</th>
+                        <th>Second Game</th>
+                        <th>Third Game</th>
+                        <th>Team Result</th>
+                    </tr>
+                    <tr>
+                        <td>{{Matchselected.P1}}</td>
+                        <td>{{Matchselected.P2}}</td>
+                        <td>{{Matchselected.P3}}</td>
+                        <td v-if="Matchselected.ResultGame== name">{{Matchselected.ResultGame}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <div v-if="pages == 'rank'">
+
+            <div class="container">
+
+                <h2 class="category"> Ranking Category </h2>
+
+                <div class="flexCenter">
+                    <div class="col">
+                        <div class="card card-body">
+                            <table class="table table-sm table-dark">
+                            <tr>
+                                <th>Won = 3 Point
+                                Lost= 1 Point</th>
+                            </tr>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion" id="viewRank">
+                <div class="flexCenter">
+                    <div class="separate">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" href="#RankOne" role="button" aria-expanded="false" aria-controls="RankOne">Absolute</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <div id="RankOne" class="collapse" aria-labelledby="headingOne" data-parent="#viewRank">
+                            <div class="card card-body">
+                                <h5 class="participants"> Absolute Ranking </h5>
+                                <table class="table table-sm table-dark">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Last Name</th>
+                                        <th>Points</th>
+                                    </tr>
+                                    <tr v-for="player in sortedPlayersByPoints">
+                                        <td v-if="player.category== 'Absolute'" @click="showPages('player-results',player.GamesPlayed)">{{player.name}}</td>
+                                        <td v-if="player.category== 'Absolute'" @click="showPages('player-results',player.GamesPlayed)">{{player.middle_name}}</td>
+                                        <td v-if="player.category== 'Absolute'">{{player.total_points}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flexCenter">
+                        <div class="separate">
+
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#RankTwo" aria-expanded="false" aria-controls="RankTwo">Between 16-18</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div id="RankTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#viewRank">
+                            <div class="card card-body">
+                                <h5 class="participants"> Between 16-18 Ranking </h5>
+                                <table class="table table-sm table-dark">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Last Name</th>
+                                        <th>Points</th>
+                                    </tr>
+                                    <tr v-for="player in sortedPlayersByPoints">
+                                        <td v-if="player.category== 'Between16_18'" @click="showPages('player-results',player.GamesPlayed)">{{player.name}}</td>
+                                        <td v-if="player.category== 'Between16_18'" @click="showPages('player-results',player.GamesPlayed)">{{player.middle_name}}</td>
+                                        <td v-if="player.category== 'Between16_18'">{{player.total_points}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!--        CLUBS-->
+        <!--        CLUBS-->
+        <!--        CLUBS-->
+        <!--        CLUBS-->
+
+        <div v-if="pages == 'clubs'">
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <a v-on:click="showPages('teamslocation')">
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </a></div>
+                </div>
+            </div>
+
+
+            <div class="flexCenter">
+
+
+                <div class="Firstclub">
+                    <img width="100px" height="100px" v-bind:src="'/images/' + teamselected.logo" v-bind:alt="teamselected.club">
+                </div>
+                <h2 class="category">{{teamselected.club}}</h2>
+            </div>
+
+            <div class="flexCenter">
+                <h3 class="category"> Location </h3>
+            </div>
+            <div class="flexCenter">
+                <iframe width="200" height="200" :src="teamselected.maps" frameborder="0" style="border:0" allowfullscreen> </iframe>
+            </div>
+
+            <div class="accordion" id="viewclubs">
+                <div class="flexCenter">
+                    <div class="separate">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" href="#clubsOne" role="button" aria-expanded="false" aria-controls="clubsOne">Team</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <div id="clubsOne" class="collapse" aria-labelledby="headingOne" data-parent="#viewclubs">
+                            <div class="card card-body">
+                                <h5 class="participants"> See Players: </h5>
+                                <table class="table table-sm table-dark">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Last Name</th>
+                                    </tr>
+                                    <tr v-for="player in teamselected.players">
+                                        <td v-if="player.category== category" @click="showPages('player-results',player.GamesPlayed)">{{player.name}}</td>
+                                        <td v-if="player.category== category" @click="showPages('player-results',player.GamesPlayed)">{{player.middle_name}}</td>
+                                        <td v-if="player.category== category" @click="showPages('player-results',player.GamesPlayed)">{{player.last_name}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flexCenter">
+                        <div class="separate">
+
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#clubsThree" aria-expanded="false" aria-controls="clubsThree">Contact</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div id="clubsThree" class="collapse" aria-labelledby="headingThree" data-parent="#viewclubs">
+                            <div class="card card-body">
+                                <h5 class="participants">General Information</h5>
+                                <ul>
+                                    <li>{{teamselected.club_phone}}</li>
+                                    <li>{{teamselected.club_Email}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div v-show="pages == 'chat'">
+
+
+            <h1 class="category"> Chat </h1>
+
+
+            <div class="chat card card-body h-100">
+                
+                <div id="posts" class="box">
+                    Loading posts...
+                </div>
+                
+
+                <div class="inputs bg-dark p-2">
+                    <input id="textInput" class="input" type="text" placeholder="Your message...">
+
+                    <button id="login" class="button btn is-info">Login</button>
+                    <button id="create-post" class="button btn is-primary d-none">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <script src="js/competition.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyA-L0W6wkoBbc62x0vA1mZ5d7ytVed_p7o",
+            authDomain: "competition-tennis-app.firebaseapp.com",
+            databaseURL: "https://competition-tennis-app.firebaseio.com",
+            projectId: "competition-tennis-app",
+            storageBucket: "competition-tennis-app.appspot.com",
+            messagingSenderId: "649029349336"
+        };
+        firebase.initializeApp(config);
+        
+        
+    </script>
+    <script src="js/chat.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>

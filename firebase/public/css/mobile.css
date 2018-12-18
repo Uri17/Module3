@@ -1,0 +1,199 @@
+body {
+    margin: 15px;
+    background-repeat: no-repeat;
+    background-image: url('../images/MDSGrass3.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    
+    
+}
+
+//index {
+margin: 15px;
+background-repeat: no-repeat;
+background-image:url('../images/CurtainBluff_3342280a.jpg'),
+url('../images/MDSGrass3.jpg');
+background-position: top,
+bottom; //
+
+
+}
+
+.blink {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-family: cursive;
+    color: black;
+    border: 5px;
+    position: relative;
+    animation: blink 10s;
+
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.flexEnd {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.flexSpaceAround {
+    display: flex;
+    justify-content: space-around;
+}
+
+.separeTop {
+    margin-bottom: 5px;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+
+}
+
+.separate {
+    margin-top: 25px;
+
+}
+
+
+.btn-primary {
+    width: 300px;
+    border-color: blue;
+}
+
+
+.category {
+    color: aliceblue;
+}
+
+.logo {
+    height: 50px;
+}
+
+.Firstclub {
+    margin-right: 10px;
+
+}
+
+.fa-question-circle {
+    font-size: 36px;
+    color: black;
+}
+
+.fa-arrow-circle-left {
+    font-size: 36px;
+    color: black;
+}
+
+
+.btn-button {
+    width: 200px;
+    border-color: black;
+
+}
+
+.btn-sbutton {
+    width: 100px;
+    border-color: black;
+}
+
+
+.btn-logOut {
+    border-color: black;
+}
+
+.btn-Menu {
+    border-color: black;
+
+}
+
+.location {
+    text-align: center;
+}
+
+
+
+li {
+    margin: 10px;
+}
+
+.table-dark {
+    background-color: #15233a;
+    border-color: cadetblue;
+    color: aliceblue;
+}
+
+
+th{
+    text-align: center;
+}
+
+td:nth-child(1){
+    width: 0px;
+    text-align: center;
+}
+
+td:nth-child(2){
+    width: 0px;
+    text-align: center;
+}
+
+td:nth-child(3){
+    width: 0px;
+    text-align: center;
+}
+
+td:nth-child(4){
+    width: 0px;
+    text-align: center;
+}
+
+
+
+
+//container{
+background-color: black;
+color: aliceblue;
+border-color: aliceblue;
+border-radius: 20px; //
+}
+
+//.RemoveBlank {
+background-color: #986767;
+background-blend-mode:multiply;
+}
+
+
+
+
+
+@media screen and (orientation: landscape) {
+    .fa-question-circle {
+        font-size: 36px;
+        color: white;
+    }
+
+    
+}
