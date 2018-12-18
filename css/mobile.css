@@ -1,0 +1,303 @@
+body {
+    margin: 15px;
+    background-repeat: no-repeat;
+    background-image: url('../images/MDSGrass3.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    
+    
+}
+
+
+.blink {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-family: cursive;
+    color: black;
+    border: 5px;
+    position: relative;
+    animation: blink 10s;
+
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.flexEnd {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.flexSpaceAround {
+    display: flex;
+    justify-content: space-around;
+}
+
+.separeTop {
+    margin-bottom: 5px;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+
+}
+
+.separate {
+    margin-top: 25px;
+
+}
+
+
+.btn-primary {
+    width: 300px;
+    border-color: blue;
+}
+
+
+.category {
+    color: aliceblue;
+}
+
+.logo {
+    height: 50px;
+}
+
+.Firstclub {
+    margin-right: 10px;
+
+}
+
+.fa-question-circle {
+    font-size: 36px;
+    color: black;
+}
+
+.fa-arrow-circle-left {
+    font-size: 36px;
+    color: black;
+}
+
+
+.btn-button {
+    width: 200px;
+    border-color: black;
+
+}
+
+.btn-sbutton {
+    width: 100px;
+    border-color: black;
+}
+
+
+.btn-logOut {
+    border-color: black;
+}
+
+.btn-Menu {
+    border-color: black;
+
+}
+
+.location {
+    text-align: center;
+}
+
+
+
+li {
+    margin: 10px;
+}
+
+.table-dark {
+    background-color: #15233a;
+    border-color: cadetblue;
+    color: aliceblue;
+}
+
+
+th{
+    text-align: center;
+}
+
+td:nth-child(1){
+    width: 0px;
+    text-align: center;
+}
+
+td:nth-child(2){
+    width: 0px;
+    text-align: center;
+}
+
+td:nth-child(3){
+    width: 0px;
+    text-align: center;
+}
+
+td:nth-child(4){
+    width: 0px;
+    text-align: center;
+}
+
+/* Messages */
+
+
+.medium-image {
+    width: 45px;
+    height: 45px;
+    margin-right: 5px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.message-chat {
+  width: 100%;
+  overflow: hidden;
+}
+
+.chat-body {
+  width: calc(100% + 17px);
+  min-height: 290px;
+  height: calc(100vh - 320px);
+  background-color: #fbfcff;
+  margin-bottom: 30px;
+  padding: 30px 5px 5px 5px;
+  overflow-y: scroll;
+}
+
+.message {
+  position: relative;
+  width: 100%;
+}
+
+.message br {
+  clear: both;
+}
+
+.message .message-body {
+  position: relative;
+  width: auto;
+  max-width: calc(100% - 150px);
+  float: left;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #dbe3e8;
+  margin: 0 5px 20px 15px;
+  color: #788288;
+}
+
+.message .message-info {
+  width: 100%;
+  height: 22px;
+}
+
+.message .message-info > h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 7px 13px 0 10px;
+  color: #65addd;
+  float: left;
+}
+
+.message hr {
+  margin: 4px 2%;
+  width: 96%;
+  opacity: 0.75;
+}
+
+.message .message-text {
+  text-align: left;
+  padding: 3px 13px 10px 13px;
+  font-size: 14px;
+}
+
+.message.my-message .message-body {
+  float: right;
+  margin: 0 15px 20px 5px;
+}
+
+.message.my-message:after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: auto;
+  right: 63px;
+  float: left;
+  z-index: 100;
+  border-top: 10px solid transparent;
+  border-left: 13px solid #fff;
+  border-bottom: 10px solid transparent;
+  border-right: none;
+}
+
+.message.my-message:before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: auto;
+  right: 62px;
+  float: left;
+  z-index: 99;
+  border-top: 11px solid transparent;
+  border-left: 13px solid #dbe3e8;
+  border-bottom: 11px solid transparent;
+  border-right: none;
+}
+
+.message.my-message .medium-image {
+  float: right;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+
+
+@media screen and (max-width: 767px) {
+ 
+  .message .message-body {
+    max-width: calc(100% - 85px);
+  }
+
+}
+
+
+@media screen and (orientation: landscape) {
+    .fa-question-circle {
+        font-size: 36px;
+        color: white;
+    }
+
+    
+}
+
+
+
+
+
+
+
+
+
